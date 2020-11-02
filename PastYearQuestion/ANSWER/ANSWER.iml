@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/oneSixSem1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneFourSem1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneSevenSem1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneThreeSem2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneTwoSem2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneSevenSem2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneNineSem1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneFourSem2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneFiveSem1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneEightSem2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/twoZeroSem1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneFiveSem2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneSixSem2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/oneThreeSem1" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
