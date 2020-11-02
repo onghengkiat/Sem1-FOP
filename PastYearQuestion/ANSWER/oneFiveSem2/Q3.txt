@@ -1,0 +1,3 @@
+
+The content of the sorted array is (ascending): 14 22 22 25 30 34 44 46 47 49 
+Input integer 13 was not found in the sorted array

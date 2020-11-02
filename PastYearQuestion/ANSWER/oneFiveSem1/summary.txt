@@ -1,0 +1,4 @@
+Total number of orders [Product D] : 1742
+Total number of orders [Product E] : 2641
+Total number of orders [Product F] : 613
+Product E has the highest number of order.
