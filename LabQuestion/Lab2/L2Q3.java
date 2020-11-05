@@ -1,4 +1,4 @@
-package LabQuestion.Lab2;
+package Lab2;
 
 import java.util.Random;
 
@@ -17,7 +17,7 @@ public class L2Q3 {
         int sum = random_num1 + random_num2 + random_num3;
         System.out.println("Sum is " + sum);
 
-        double average = sum/3;
+        double average = sum/3.0;
         System.out.printf("Average is %.2f",average);
     }
 }

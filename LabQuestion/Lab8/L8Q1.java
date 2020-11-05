@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class L8Q1 {
     public static void main(String[] args) {
+        /*
         Number a = new Number();
         a.showAll();
         a.showEven();
@@ -155,5 +156,6 @@ class Number{
             System.out.print(rnd_number_array[i] + ",");
         }
        System.out.println();
+   */
    }
 }

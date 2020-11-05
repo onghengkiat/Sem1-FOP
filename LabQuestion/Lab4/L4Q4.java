@@ -1,4 +1,4 @@
-package LabQuestion.Lab4;
+package Lab4;
 
 import java.util.Scanner;
 

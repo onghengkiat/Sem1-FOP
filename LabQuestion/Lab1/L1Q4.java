@@ -1,4 +1,4 @@
-package LabQuestion.Lab1;
+package Lab1;
 
 public class L1Q4 {
     public static void main(String[] args) {

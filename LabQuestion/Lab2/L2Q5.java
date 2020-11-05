@@ -1,9 +1,12 @@
-package LabQuestion.Lab2;
+package Lab2;
 
 import java.util.Random;
 
 public class L2Q5 {
     public static void main(String[] args) {
+        //A sample to show how it works
+        //System.out.println(6/10);
+
         Random rnd = new Random();
         int rnd_number = rnd.nextInt(10001);
         System.out.println("The random number is " + rnd_number);

@@ -1,4 +1,4 @@
-package LabQuestion.Lab2;
+package Lab2;
 
 import java.util.Scanner;
 
@@ -11,8 +11,11 @@ public class L2Q2 {
         System.out.println("Enter down payment");
         double d = input.nextDouble();
 
-        System.out.println("Enter interest rate in %");
-        double r = input.nextDouble();
+        double r;
+        do {
+            System.out.println("Enter interest rate in %");
+            r = input.nextDouble();
+        }while(r < 0 || r > 100);
 
         System.out.println("Enter loan duration in year");
         double y = input.nextDouble();
