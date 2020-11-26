@@ -20,6 +20,9 @@ public class L3Q5 {
         if (a*d - b*c == 0)
             System.out.println("The equation has no solution");
         else{
+            // 3x + y = 12, a=3,b=1,e=12
+            // 2x + y = 11  c=2,d=1,f=11
+            // x = 1, y = 9
             double x = (e*d-b*f)/(a*d-b*c);
             double y = (a*f-e*c)/(a*d-b*c);
             System.out.println("Value of x is " + x);

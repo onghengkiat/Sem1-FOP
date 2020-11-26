@@ -1,4 +1,3 @@
-package Lab4;
 
 import java.util.Scanner;
 
@@ -14,6 +13,14 @@ public class L4Q2 {
             }
         }
 
+        int sum_method2 = 0;
+        int cumulative_sum = 0;
+        for(int i = 1 ; i <= n ;i ++){
+            cumulative_sum += i;
+            sum_method2 += cumulative_sum;
+        }
+
         System.out.println("The sum is " + sum);
+        System.out.println("The sum using method 2 is " + sum_method2);
     }
 }

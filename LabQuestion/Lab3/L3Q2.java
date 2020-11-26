@@ -28,7 +28,6 @@ public class L3Q2 {
                 break;
             default:
                 System.out.println("Impossible to reach here");
-                break;
         }
         System.out.println(rnd_num + " is " + word);
 
