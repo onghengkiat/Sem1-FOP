@@ -1,18 +1,16 @@
-package LabQuestion.Lab8;
 
 import java.util.Random;
 
 public class L8Q1 {
     public static void main(String[] args) {
-        /*
         Number a = new Number();
         a.showAll();
         a.showEven();
         a.showPrime();
         a.showSquare();
-        System.out.println(a.getMax());
-        System.out.println(a.getMin());
-        System.out.println(a.getAverage());
+        a.showMax();
+        a.showMin();
+        a.showAverage();
         System.out.println("\n\n");
 
 
@@ -21,20 +19,20 @@ public class L8Q1 {
         b.showEven();
         b.showPrime();
         b.showSquare();
-        System.out.println(b.getMax());
-        System.out.println(b.getMin());
-        System.out.println(b.getAverage());
-
+        b.showMax();
+        b.showMin();
+        b.showAverage();
         System.out.println("\n\n");
 
+        
         Number c = new Number(4,50);
         c.showAll();
         c.showEven();
         c.showPrime();
         c.showSquare();
-        System.out.println(c.getMax());
-        System.out.println(c.getMin());
-        System.out.println(c.getAverage());
+        c.showMax();
+        c.showMin();
+        c.showAverage();
 
     }
 }
@@ -69,7 +67,7 @@ class Number{
         }
     }
 
-    public int getMin(){
+    public void showMin(){
         System.out.println("min");
         int min = rnd_number_array[0];
         for(int i = 1 ; i < occurence ; i ++){
@@ -77,10 +75,10 @@ class Number{
                 min = rnd_number_array[i];
             }
         }
-        return min;
+        System.out.println(min);
     }
 
-    public int getMax(){
+    public void showMax(){
         System.out.println("max");
         int max = rnd_number_array[0];
         for(int i = 1 ; i < occurence ; i ++){
@@ -88,23 +86,23 @@ class Number{
                 max = rnd_number_array[i];
             }
         }
-        return max;
+        System.out.println(max);
     }
 
-    public double getAverage(){
+    public void showAverage(){
         System.out.println("avg");
         int sum = 0;
         for(int i = 1 ; i < occurence ; i ++){
             sum += rnd_number_array[i];
         }
-        return sum/(double)occurence;
+        System.out.printf("%.4f",sum/(double)occurence);
     }
 
     public void showEven(){
         System.out.println("even");
         for(int i = 0 ; i < occurence ; i ++){
             if(rnd_number_array[i] % 2 == 0 ){
-                System.out.print(rnd_number_array[i] + ",");
+                System.out.print(rnd_number_array[i] + " ");
             }
         }
         System.out.println();
@@ -114,7 +112,7 @@ class Number{
         System.out.println("prime");
         for(int i = 0 ; i < occurence ; i ++){
             if(isPrime(rnd_number_array[i])){
-                System.out.print(rnd_number_array[i] + ",");
+                System.out.print(rnd_number_array[i] + " ");
             }
         }
         System.out.println();
@@ -136,7 +134,7 @@ class Number{
         System.out.println("square");
         for(int i = 0 ; i < occurence ; i++){
             if(isSquare(rnd_number_array[i])){
-                System.out.print(rnd_number_array[i] + ",");
+                System.out.print(rnd_number_array[i] + " ");
             }
         }
         System.out.println();
@@ -153,9 +151,8 @@ class Number{
    public void showAll(){
        System.out.println("all");
         for(int i = 0;  i < occurence ; i++){
-            System.out.print(rnd_number_array[i] + ",");
+            System.out.print(rnd_number_array[i] + " ");
         }
        System.out.println();
-   */
    }
 }
