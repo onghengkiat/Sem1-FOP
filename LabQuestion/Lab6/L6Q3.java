@@ -1,3 +1,4 @@
+
 import java.util.Arrays;
 
 public class L6Q3 {
@@ -9,18 +10,8 @@ public class L6Q3 {
     }
 
     public static void ArrayReversing(int [] array){
-        int temp=0;
-
         //half array length
-        int half_length=array.length/2;
-
-        //if the array length is odd number
-        if(array.length%2 !=0){
-            //for example if 11 integers
-            //half_length would be 6
-            half_length = (array.length+1)/2;
-            System.out.println(half_length);
-        }
+        int half_length=array.length/2, temp;
 
         int max_index = array.length - 1;
         for (int i=0; i<half_length;i++){
