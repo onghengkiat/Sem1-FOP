@@ -1,37 +1,55 @@
 import jdk.swing.interop.SwingInterOpUtils;
 
+import java.io.*;
+import java.math.BigDecimal;
+import java.util.Scanner;
+
 public class L8Q7 {
     public static void main(String[] args) {
-        money money1 = new money(102.21);
+        //suggest to use BigDecimal
+        System.out.println(153.20 - 100);
+        //53.20
+
+        BigDecimal amount1 = new BigDecimal("153.20");
+        BigDecimal amount2 = new BigDecimal("100");
+        BigDecimal substraction = amount1.subtract(amount2);
+        System.out.println(substraction);
+
+
+        Money money1 = new Money(102.21);
         money1.roundUp();
         money1.calculate();
         money1.displayAmount();
 
-        money money2 = new money(51);
+        Money money2 = new Money(51);
         money2.roundUp();
         money2.calculate();
         money2.displayAmount();
 
-        money substractMoney = money.substraction(money1, money2);
+        Money substractMoney = Money.substraction(money1, money2);
         substractMoney.calculate();
         substractMoney.displayAmount();
-        money additionMoney = money.addition(money1, money2);
+
+        Money additionMoney = Money.addition(money1, money2);
         additionMoney.calculate();
         additionMoney.displayAmount();
     }
 }
 
-class money {
-
+class Money {
     private int RM100, RM50, RM10, RM5, RM1, sen50, sen20, sen10, sen5;
     private double totalAmount;
 
-    public money(double a) {
+    public Money(double a) {
         totalAmount = a;
     }
 
     public void roundUp() {
+        //10.11
+        //1011
         int temp = (int)(totalAmount*100);
+
+        //1
         if (temp % 10 == 9 || temp % 10 == 4) {
             totalAmount += 0.01;
         } else if (temp % 10 == 8 || temp %10 == 3) {
@@ -41,16 +59,29 @@ class money {
         } else if (temp % 10 == 6 || temp % 10 == 1) {
             totalAmount -= 0.01;
         }
+
         //System.out.println(this.totalAmount);
+        //53.199999
+        //5319.99999999999
+        //5320.000000000000
+        //53.20
         this.totalAmount = Math.round(this.totalAmount*100)/100.0;
     }
 
     public void calculate() {
         double temp = totalAmount;
+        // 102/100 = 1.02
+        // 1
+        // RM 102.20
         RM100 += temp / 100;
         temp -= RM100 * 100;
+        // RM 2.20
+
         temp = Math.round(temp*100)/100.0;
 
+        // RM 2.20
+        // 0.0220
+        // 0
         RM50 += temp / 50;
         temp -= RM50 * 50;
         temp = Math.round(temp*100)/100.0;
@@ -82,13 +113,15 @@ class money {
         sen5 += temp / 0.05;
     }
 
-    public static money addition(money a, money b) {
-        money c = new money(a.totalAmount + b.totalAmount);
+    // Money class to add two Money objects
+    // It will return a Money object
+    public static Money addition(Money a, Money b) {
+        Money c = new Money(a.totalAmount + b.totalAmount);
         return c;
     }
 
-    public static money substraction(money a, money b) {
-        money c = new money(a.totalAmount - b.totalAmount);
+    public static Money substraction(Money a, Money b) {
+        Money c = new Money(a.totalAmount - b.totalAmount);
         return c;
     }
 
@@ -105,5 +138,6 @@ class money {
         System.out.println("The number of 5 sen is " + sen5 + " \n ");
     }
 }
+
 
 

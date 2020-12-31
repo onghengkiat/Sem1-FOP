@@ -1,23 +1,32 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
 public class L9Q1 {
     public static void main(String[] args) {
         Rectangle rectangle = new Rectangle("Rectangle 1",8,10);
         rectangle.computeArea();
-        rectangle.computerPerimeter();
+        rectangle.computePerimeter();
         rectangle.display();
 
         System.out.println("\n");
 
+        rectangle.input(12,14);
+        rectangle.computeArea();
+        rectangle.computePerimeter();
+        rectangle.display();
+        System.out.println("\n");
+
         Square square = new Square("Square 1",10);
         square.computeArea();
-        square.computerPerimeter();
+        square.computePerimeter();
         square.display();
 
         System.out.println("\n");
 
         Circle circle = new Circle("Circle 1",10);
         circle.computeArea();
-        circle.computerPerimeter();
+        circle.computePerimeter();
         circle.display();
+
     }
 }
 
@@ -42,16 +51,25 @@ class Shape {
         return this.area;
     }
 
-    void setPerimeter(int a) {
+    public void setPerimeter(double a) {
         this.perimeter = a;
     }
 
-    void setArea(int a) {
+    public void setArea(double a) {
         this.area = a;
     }
 
-    void display() {
-        System.out.printf("%s has perimer of %.2f and area of %.2f", this.name, this.perimeter, this.area);
+    public void display() {
+        System.out.printf("%s has perimeter of %.2f and area of %.2f", this.name, this.perimeter, this.area);
+    }
+
+    @Override
+    public String toString() {
+        return "Shape{" +
+                "name='" + name + '\'' +
+                ", perimeter=" + this.getPerimeter() +
+                ", area=" + this.getArea() +
+                '}';
     }
 }
 
@@ -70,11 +88,12 @@ class Rectangle extends Shape {
         this.width = width;
     }
 
-    public void acceptSideLength(double length, double width){
+    public void input(int length ,int width){
         this.length = length;
         this.width = width;
+
     }
-    public void computerPerimeter() {
+    public void computePerimeter() {
         this.perimeter = 2 * (length + width);
     }
 
@@ -96,11 +115,11 @@ class Square extends Shape {
         this.sideLength = sideLength;
     }
 
-    public void acceptSideLength(double sideLength){
+    public void input(int sideLength){
         this.sideLength = sideLength;
     }
 
-    public void computerPerimeter() {
+    public void computePerimeter() {
         this.perimeter = 4 * sideLength;
     }
 
@@ -121,16 +140,15 @@ class Circle extends Shape {
         super(name);
         this.diameter = diameter;
     }
-
-    public void acceptDiameter(double diameter){
+    public void input(int diameter){
         this.diameter = diameter;
     }
-    public void computerPerimeter() {
-        this.perimeter = 3.142 * diameter;
+
+    public void computePerimeter() {
+        this.setPerimeter(Math.PI * this.diameter);
     }
 
     public void computeArea() {
-        this.area = 3.142 * Math.pow((this.diameter / 2), 2);
+        this.setArea(Math.PI * Math.pow((this.diameter / 2), 2));
     }
 }
-

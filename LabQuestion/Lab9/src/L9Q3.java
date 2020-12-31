@@ -1,26 +1,39 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 //not done yet
 public class L9Q3 {
     public static void main(String[] args) {
-        Lecturer lecturer1 = new Lecturer("Lee Hong Yan", "Gay", "10", "lecturer.txt");
+        Lecturer lecturer1 = new Lecturer("Yan Yan", "Male", "10/10/2020", "lecturer.txt");
         lecturer1.display();
-        lecturer1.setCreditHour();
         lecturer1.displayCreditHour();
     }
 }
 
 class Lecturer extends PersonProfile {
 
-    String[] courseName = new String[4], courseCode = new String[4];
-    int[] semester = new int[4], session = new int[4], creditHour = new int[4], numOfStudents = new int[4];
+    private String[] courseName, courseCode;
+    private int[] semester, session, creditHour, numOfStudents;
 
-    Lecturer(String a, String b, String c, String d) {
-        super(a, b, c);
+    public Lecturer(String name, String gender, String dateOfBirth, String filename) {
+        super(name, gender, dateOfBirth);
+        this.inputCourse(filename);
+        this.computeCreditHour();
+    }
+
+    private void inputCourse(String filename){
+        int numberOfCourse = this.countCourse(filename);
+        courseName = new String[numberOfCourse];
+        courseCode = new String[numberOfCourse];
+        semester = new int[numberOfCourse];
+        session = new int[numberOfCourse];
+        creditHour = new int[numberOfCourse];
+        numOfStudents = new int[numberOfCourse];
+
         try {
-            Scanner inputStream = new Scanner(new FileInputStream(d));
+            Scanner inputStream = new Scanner(new FileInputStream(filename));
             int i = 0;
             while (inputStream.hasNextLine()) {
                 courseCode[i] = inputStream.nextLine();
@@ -35,12 +48,32 @@ class Lecturer extends PersonProfile {
                 i++;
                 inputStream.nextLine();
             }
+            inputStream.close();
         } catch (FileNotFoundException e) {
             System.out.println("The file is not found");
         }
     }
 
-    void setCreditHour() {
+    private int countCourse(String filename){
+        int count = 0;
+        try {
+            Scanner inputStream = new Scanner(new FileInputStream(filename));
+            while (inputStream.hasNextLine()) {
+                for(int i = 0 ; i < 6 ; i++) {
+                    inputStream.nextLine();
+                }
+                count++;
+            }
+            inputStream.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("The file is not found");
+        } catch (IOException e) {
+            System.out.println("Problem with file output");
+        }
+        return count;
+    }
+
+    private void computeCreditHour() {
         for (int i = 0; i < creditHour.length; i++) {
             if (numOfStudents[i] >= 150) {
                 creditHour[i] *= 3;
@@ -48,19 +81,17 @@ class Lecturer extends PersonProfile {
                 creditHour[i] *= 2;
             } else if (numOfStudents[i] >= 50 && numOfStudents[i] < 100) {
                 creditHour[i] *= 1.5;
-            } else {
-                creditHour[i] *= 1;
             }
         }
     }
 
-    void displayCreditHour() {
+    public void displayCreditHour() {
         for (int i = 0; i < creditHour.length; i++) {
             System.out.println("The course code is " + courseCode[i]);
             System.out.println("The course name is " + courseName[i]);
             System.out.println("It is semester  " + semester[i]);
             System.out.println("It is session " + session[i]);
-            System.out.println("Its credit hour is  " + creditHour[i]);
+            System.out.println("Its credit hour is " + creditHour[i]);
             System.out.println("The number of students is " + numOfStudents[i]);
         }
     }

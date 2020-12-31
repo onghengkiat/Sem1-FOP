@@ -8,12 +8,24 @@ public class L7Q4 {
         try {
             Scanner inputStream = new Scanner(new FileInputStream("original.txt"));
             int numLine = 0, numWords = 0, numChar = 0;
+
+            //first line
+            //second line
+            //whatever
             while (inputStream.hasNextLine()) {
-                String sentence = inputStream.nextLine();
+
                 numLine += 1;
+
+                String sentence = inputStream.nextLine();
+
+                //first
+                //line
+                //words = {first, line}
                 String[] words = sentence.split(" ");
                 numWords += words.length;
 
+                //first
+                //line
                 for(int i =0; i <words.length ;i++){
                     numChar += words[i].length();
                 }

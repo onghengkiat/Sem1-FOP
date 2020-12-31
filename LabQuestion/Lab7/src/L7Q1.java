@@ -3,10 +3,21 @@ import java.util.Scanner;
 
 public class L7Q1 {
     public static void main(String[] args) {
+
         //make a dat file
         try {
-            String[][] array = {{"WXES1116", "Programming I"}, {"WXES1115", "Data Structure"}, {"WXES1110", "Operating System"}, {"WXES1112", "Computing Mathematics I"}};
+            String[][] array = {
+                    {"WXES1116", "Programming I"},
+                    {"WXES1115", "Data Structure"},
+                    {"WXES1110", "Operating System"},
+                    {"WXES1112", "Computing Mathematics I"}
+            };
             ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("course.dat"));
+
+            //WXES1116
+            //Programming I
+            //WXES1115
+            //Data Structure
             for (int i = 0; i < array.length; i++) {
                 for (int j = 0; j < array[i].length; j++) {
                     outputStream.writeUTF(array[i][j]);
@@ -17,6 +28,7 @@ public class L7Q1 {
             System.out.println("Problem with file output");
         }
 
+        //searching for the course in the dat file
         try {
             ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("course.dat"));
             System.out.println("Enter the course code");

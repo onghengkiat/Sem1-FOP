@@ -16,6 +16,11 @@ public class L7Q2 {
 
             PrintWriter outputStream = new PrintWriter (new FileOutputStream("index.html"));
             while(in.hasNextLine()){
+                String line = in.nextLine();
+                String [] words = line.split(" ");
+                for(int i = 0 ; i < words.length ; i++){
+
+                }
                 outputStream.println(in.nextLine());
             }
 

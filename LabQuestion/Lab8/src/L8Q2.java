@@ -1,6 +1,6 @@
 public class L8Q2 {
     public static void main(String[] args) {
-        BankAccount account1 = new BankAccount("ONGHENGKIAT", 000510121234, 1000000);
+        BankAccount account1 = new BankAccount("ONGHENGKIAT", "000510121234", 1000000);
         account1.displayBalance();
         account1.deposit(500);
         account1.displayBalance();
@@ -12,9 +12,10 @@ public class L8Q2 {
 class BankAccount {
 
     private String name;
-    private int IC, balance;
+    private String IC;
+    private int balance;
 
-    public BankAccount(String name, int ic, int balance) {
+    public BankAccount(String name, String ic, int balance) {
         this.name = name;
         this.IC = ic;
         this.balance =balance;
@@ -31,7 +32,7 @@ class BankAccount {
     }
 
     public void displayBalance() {
-        System.out.println("The balance of the account is " + balance);
+        System.out.println("The balance of the account is " + this.balance);
     }
 
 }

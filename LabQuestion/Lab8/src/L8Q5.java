@@ -7,12 +7,18 @@ public class L8Q5 {
         int round = 1;
         while (true) {
             System.out.println("Round " + round);
-            player1.roll();
+            player1.move();
+            System.out.println("Current Score for " + player1.getName() +  " is " + player1.getScore());
+
             if (player1.isWin()) {
+                System.out.println(player1.getName() + " wins the game");
                 break;
             }
-            player2.roll();
+
+            player2.move();
+            System.out.println("Current Score for " + player2.getName() + " is "  + player2.getScore());
             if (player2.isWin()) {
+                System.out.println(player2.getName() + " wins the game");
                 break;
             }
             System.out.println("");
@@ -27,21 +33,26 @@ class Game {
     private String name;
     private int score = 0;
 
-    public Game(String a) {
-        name = a;
+    public Game(String playerName) {
+        this.name = playerName;
     }
 
-    public void roll() {
+    public void move() {
+        //randomly generate a number from 1 to 6
         int dice = rnd.nextInt(6) + 1;
         System.out.println(this.name + " rolls " + dice );
         this.score += dice;
-        System.out.println("Current Score: " + this.score);
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public boolean isWin(){
-        if(this.score >= 100){
-            System.out.println(this.name + " wins!");
-        }
         return this.score >= 100;
     }
 }

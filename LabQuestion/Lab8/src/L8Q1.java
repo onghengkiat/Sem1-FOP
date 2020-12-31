@@ -1,4 +1,5 @@
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class L8Q1 {
@@ -38,6 +39,7 @@ public class L8Q1 {
 }
 
 class Number{
+
     private int occurence = 10 ;
     private int maximum = 100;
     private int [] rnd_number_array ;
@@ -48,7 +50,7 @@ class Number{
     }
 
     public Number(int occ){
-        occurence = occ;
+        this.occurence = occ;
         rnd_number_array = new int[occurence];
         generate();
     }
@@ -92,7 +94,7 @@ class Number{
     public void showAverage(){
         System.out.println("avg");
         int sum = 0;
-        for(int i = 1 ; i < occurence ; i ++){
+        for(int i = 0 ; i < occurence ; i ++){
             sum += rnd_number_array[i];
         }
         System.out.printf("%.4f",sum/(double)occurence);
@@ -141,6 +143,9 @@ class Number{
     }
 
    private boolean isSquare(int num){
+        if(num == 0){
+            return false;
+        }
         int n = (int)(Math.sqrt(num));
         if(Math.pow(n,2)  == num){
             return true;
@@ -155,4 +160,13 @@ class Number{
         }
        System.out.println();
    }
+
+    @Override
+    public String toString() {
+        return "Number{" +
+                "occurence=" + occurence +
+                ", maximum=" + maximum +
+                ", rnd_number_array=" + Arrays.toString(rnd_number_array) +
+                '}';
+    }
 }

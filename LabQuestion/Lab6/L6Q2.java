@@ -1,38 +1,31 @@
 
 public class L6Q2 {
     public static void main(String[] args) {
-        for (int i=0 ; i<5 ; i++){ //Printing triangle
-            //left space
-            multiPrint (5-i,' ');
-            //number of stars
-            multiPrint(i+1+i , '*');
+        int triangle_height = 3;
+        for (int i=0 ; i<triangle_height ; i++){ //Printing triangle
+            multiPrint (triangle_height-i,' '); //left space
+            multiPrint(i+1+i , '*'); //number of stars
             System.out.println(""); //Space a line
         }
-
-        System.out.println("\n\n");
-
-        for (int i=0 ; i<=3 ; i++){ //Printing upper and middle part of diamond
-            //left space
-            multiPrint (5-i,' ');
-            //number of stars
-            multiPrint(i+1+i , '*');
+        System.out.println(""); //Space a line
+        int diamond_height = 5;
+        int half_height = diamond_height/2;
+        for (int i=0 ; i<half_height ; i++){ //Printing upper part of diamond
+            multiPrint (half_height-i,' '); //left space
+            multiPrint(i+1+i , '*'); //number of stars
             System.out.println(""); //Space a line
         }
-
-        multiPrint(5-4, ' ');
-        multiPrint(4 + 1 + 4, '*');
-        System.out.println();
-
-        for(int i=3;i>=0;i--){//Printing lower part of diamond
-            //left space
-            multiPrint (5-i,' ');
-
-            //number of stars
-            multiPrint(i+1+i , '*');
+        if(diamond_height%2 != 0) {
+            multiPrint(half_height + 1 + half_height, '*');//Printing middle part
+            System.out.println();
+        }
+        for(int i=half_height - 1;i>=0;i--){//Printing lower part of diamond
+            multiPrint (half_height-i,' '); //left space
+            multiPrint(i+1+i , '*'); //number of stars
             System.out.println(""); //Space a line
         }
     }
-
+                
     public static void multiPrint (int n, char c){
         for (int i =0; i<n ; i++){
             System.out.print(c);

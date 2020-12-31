@@ -1,8 +1,7 @@
 public class L8Q4 {
     public static void main(String[] args) {
         Fraction fraction1 = new Fraction();
-        fraction1.setNumerator(6);
-        fraction1.setDenominator(3);
+        fraction1.input(3,6);
         System.out.println("Numerator is: " + fraction1.getNumerator());
         System.out.println("Denominator is: " + fraction1.getDenominator());
         fraction1.displayFraction();
@@ -18,6 +17,12 @@ class Fraction {
         denominator = 1;
     }
 
+    public void input(int numerator, int denominator){
+        this.numerator= numerator;
+        this.denominator = denominator;
+    }
+
+    //mutator
     public void setNumerator(int a) {
         numerator = a;
     }
@@ -26,6 +31,7 @@ class Fraction {
         denominator = a;
     }
 
+    //accessor
     public int getNumerator() {
         return numerator;
     }
@@ -41,16 +47,23 @@ class Fraction {
         } else {
             max = numerator;
         }
-        for (int i = max; i >= 2; i--) {
+        for (int i = max; i >= 1; i--) {
             if (denominator % i == 0 && numerator % i == 0) {
                 gcd = i;
                 break;
             }
         }
 
+        // gcd = 3
+        // 9/6 = 3/2
         denominator /= gcd;
         numerator /= gcd;
 
-        System.out.println("The simplest fraction is " + numerator + " / " + denominator);
+        if (denominator == 1){
+            System.out.println("The simplest fraction is " + numerator);
+        }else{
+            System.out.println("The simplest fraction is " + numerator + " / " + denominator);
+        }
+
     }
 }

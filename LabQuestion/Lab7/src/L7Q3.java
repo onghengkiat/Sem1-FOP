@@ -7,9 +7,14 @@ public class L7Q3 {
             Scanner inputStream = new Scanner(new FileInputStream("original.txt"));
             PrintWriter outputStream = new PrintWriter (new FileOutputStream("reverse.txt"));
             while (inputStream.hasNextLine()) {
-
+                //first line
+                //second line
+                //whatever
                 String sentence = inputStream.nextLine();
                 //print from last character
+                //enil tsrif
+                //enil dnoces
+                //
                 for (int i = sentence.length() - 1; i >= 0; i--) {
                     outputStream.print(sentence.charAt(i));
                 }
