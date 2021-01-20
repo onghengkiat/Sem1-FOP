@@ -98,7 +98,7 @@ class Appointment implements Searchable {
             //the "true" is to make sure that it doesn't rewrite the text file, it appends to the text file
             PrintWriter outputStream = new PrintWriter(new FileOutputStream("appointment.txt" ,true));
 
-            //store the apoointment in the textpad
+            //store the appointment in the textfile
             outputStream.println(this.dateStartTime);
             outputStream.println(this.dateEndTime);
             outputStream.println();
@@ -121,19 +121,23 @@ class Appointment implements Searchable {
     public static boolean search(String dateStartTime, String dateEndTime) {
         try {
             Scanner inputStream = new Scanner(new FileInputStream("appointment.txt"));
+            //  format : day/month/year/time
             String [] dateStartTimeArray = dateStartTime.split("/");
             String [] dateEndTimeArray = dateEndTime.split("/");
             int day = Integer.parseInt(dateStartTimeArray[0]);
             int month = Integer.parseInt(dateStartTimeArray[1]);
             int year = Integer.parseInt(dateStartTimeArray[2]);
             int start_time = Integer.parseInt(dateStartTimeArray[3]);
-            int end_time = Integer.parseInt(dateEndTimeArray[2]);
+            int end_time = Integer.parseInt(dateEndTimeArray[3]);
 
             //to get the input from the textpad which is the old appointments that have been done before
             while (inputStream.hasNextLine()) {
 
                 //getting the input according to the sequence on how we output them just now
                 //index 0 = day, index 1= month , index 2 = year, index 3 = time
+                //start time day/month/year/time
+                //end time day/month/year/time
+                //
                 String [] appointmentDateStartTime = inputStream.nextLine().split("/");
                 String [] appointmentDateEndTime = inputStream.nextLine().split("/");
                 //capture the empty line
@@ -148,13 +152,17 @@ class Appointment implements Searchable {
                 //only compare them if day , month and year also the same which means at the same day
                 if (appointment_day == day && appointment_month == month && appointment_year == year){
 
-                    //if start time is start before the saved appointment but end after the start time of the saved appointment, then it is false
-                    if(appointment_start_time <= start_time && appointment_end_time > start_time){
+                    // if the start time is start before the start time of the saved appointment but end after it
+                    //example recorded appointment : 10 - 12 , start time = 10
+                    //new appointment : 9 - 13 , start time = 9, end time = 13
+                    if(appointment_start_time <= end_time && appointment_start_time >= start_time){
                         return false;
                     }
 
                     //if the start time is start in between the time of the saved appointment ,then it is false
-                    else if(appointment_start_time <= end_time && appointment_start_time >= start_time){
+                    //example recorded appointment : 10 - 12 , start time = 10, end time = 12
+                    //new appointment : 11 - 13 , start time = 11
+                    else if(appointment_end_time >= start_time && appointment_start_time <= start_time){
                         return false;
                     }
                 }

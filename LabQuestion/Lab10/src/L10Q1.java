@@ -1,8 +1,8 @@
 public class L10Q1 {
     public static void main(String[] args) {
         Employee worker1 = new permanentEmployee("Ong Heng Kiat", 'B');
-        Employee worker2 = new contractStaff("Lee Hong Yan", 1000);
-        Employee worker3 = new temporaryStaff("Ong Zi Jing ", 10);
+        Employee worker2 = new contractStaff("Yan Yan", 1000);
+        Employee worker3 = new temporaryStaff("Min Min", 10);
         worker1.display();
         worker2.display();
         worker3.display();
@@ -33,12 +33,15 @@ class permanentEmployee extends Employee {
         }
         else if (category == 'C') {
             this.salary = 2000;
+        }else{
+            this.salary = 0;
         }
     }
 
     @Override
     public void display() {
-        System.out.println("The worker " + this.name + " has a salary of " + this.salary + " for this month");
+        System.out.printf("The worker %s working as a permanent employee " +
+                "has a salary of RM%.2f for this month\n", this.name, this.salary);
     }
 }
 
@@ -51,7 +54,8 @@ class contractStaff extends Employee {
 
     @Override
     public void display() {
-        System.out.println("The worker " + this.name + " has a salary of " + this.salary + " for this month");
+        System.out.printf("The worker %s working as a contract staff " +
+                "has a salary of RM%.2f for this month\n", this.name, this.salary);
     }
 }
 
@@ -64,7 +68,8 @@ class temporaryStaff extends Employee {
 
     @Override
     public void display() {
-        System.out.println("The worker " + this.name + " has a salary of " + this.salary + " for this month");
+        System.out.printf("The worker %s working as a temporary staff " +
+                "has a salary of RM%.2f for this month\n", this.name, this.salary);
     }
 }
 

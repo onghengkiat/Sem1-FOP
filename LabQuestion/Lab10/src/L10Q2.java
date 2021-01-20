@@ -9,16 +9,16 @@ public class L10Q2 {
         //the program will have exception if product.txt does not exist in the project
         //in this case , the input file is product.txt while the output file is cipherText.txt
         //the shift value is 15
-        SubstitutionCipher encode = new SubstitutionCipher("product.txt", "cipherText.txt", 15);
+        SubstitutionCipher encode = new SubstitutionCipher("product.txt", "SubstitutionEncrypt.txt", 3);
 
         //in this case , the input file is cipherText.txt while the plainText.txt is the output file
         //the shift value is 15
-        SubstitutionCipher decode = new SubstitutionCipher("cipherText.txt", "plainText.txt", 15);
+        SubstitutionCipher decode = new SubstitutionCipher("SubstitutionEncrypt.txt", "SubstitutionDecrypt.txt", 3);
 
         //then encode and decode
-        //the produxt.txt and plainText.txt should have the same contents in this case
-        encode.encode();
-        decode.decode();
+        //the product.txt and SubstitutionDecrypt.txt should have the same contents in this case
+        encode.readPlainFile();
+        decode.readEncryptFile();
     }
 }
 
@@ -42,8 +42,7 @@ class SubstitutionCipher implements MessageEncoder {
         this.shift = shift;
     }
 
-    @Override
-    public void encode() {
+    public void readPlainFile() {
         try {
             //get the input from the input.txt
             Scanner inputStream = new Scanner(new FileInputStream(this.input));
@@ -58,15 +57,8 @@ class SubstitutionCipher implements MessageEncoder {
                 //assign the input line by line
                 String line = inputStream.nextLine();
 
-                //output all the characters in the string one by one, from first character until the last character
-                //the output is saved in a output.txt
-                for (int i = 0; i < line.length(); i++) {
-                    //at the same time, the character is added by the value of "shift"
-                    outputStream.print((char) (line.charAt(i) + shift));
-                }
-
                 //print out a line after you finish printing out a line of characters
-                outputStream.println();
+                outputStream.println(encode(line));
             }
 
             //close and save the file
@@ -77,8 +69,7 @@ class SubstitutionCipher implements MessageEncoder {
         }
     }
 
-    @Override
-    public void decode() {
+    public void readEncryptFile() {
         try {
             //same concept as above
             Scanner inputStream = new Scanner(new FileInputStream(input));
@@ -86,12 +77,7 @@ class SubstitutionCipher implements MessageEncoder {
 
             while (inputStream.hasNextLine()) {
                 String line = inputStream.nextLine();
-                for (int i = 0; i < line.length(); i++) {
-
-                    //the different thing is decode method will minus the shift value , and not adding
-                    outputStream.print((char) (line.charAt(i) - shift));
-                }
-                outputStream.println();
+                outputStream.println(decode(line));
             }
             inputStream.close();
             outputStream.close();
@@ -100,4 +86,34 @@ class SubstitutionCipher implements MessageEncoder {
         }
     }
 
+    private final int ascii_code_max = 256;
+    @Override
+    public String encode(String plainText) {
+        String encoded = "";
+        //example you have a alphabet which is 'A', shift is 1
+        //
+        //output all the characters in the string one by one, from first character until the last character
+        //the output is saved in a output.txt
+        for (int i = 0; i < plainText.length(); i++) {
+            //at the same time, the character is added by the value of "shift"
+            encoded += (char)( (plainText.charAt(i) + shift)% ascii_code_max);
+        }
+        return encoded;
+    }
+
+    @Override
+    public String decode(String cipherText) {
+        String decoded = "";
+
+        for (int i = 0; i < cipherText.length(); i++) {
+            //as
+            int ascii_code = cipherText.charAt(i) - shift;
+            if(ascii_code < 0){
+                ascii_code = ascii_code_max + ascii_code;
+            }
+            //the different thing is decode method will minus the shift value , and not adding
+            decoded += (char)(ascii_code) ;
+        }
+        return decoded;
+    }
 }

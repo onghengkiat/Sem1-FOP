@@ -1,8 +1,8 @@
 //an interface that consists of encode and decode method to be implemented inside the other class
 public interface MessageEncoder {
     //encrypty the plain text
-    void encode();
+    public String encode(String plainText);
 
     //decode the encrypted text
-    void decode();
+    public String decode(String cipherText);
 }
