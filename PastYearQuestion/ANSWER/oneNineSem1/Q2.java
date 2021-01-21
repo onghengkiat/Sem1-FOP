@@ -32,6 +32,13 @@ class Q2 {
                 matrix[row][column] = rnd.nextInt(10);
             }
         }
+        /* matrix.length returns me 3
+        row = 0
+        matrix[row.length] returns me the number of column at this row, it will return me 4
+        1 2 3 4
+        3 7 7 8 7  9  0
+        8 9 0 10 3 4
+         */
         return matrix;
     }
 
@@ -45,25 +52,31 @@ class Q2 {
     }
 
     public static void addMatrix(int[][] matrix1, int[][] matrix2) {
-        int[][] ans = new int[matrix1.length][matrix1.length];
         for (int row = 0; row < matrix1.length; row++) {
             for (int column = 0; column < matrix1.length; column++) {
-                ans[row][column] = matrix2[row][column] + matrix1[row][column];
+                System.out.print(matrix2[row][column] + matrix1[row][column]+ " ");
             }
+            System.out.println();
         }
-        displayMatrix(ans);
     }
 
     public static void multiplyMatrix(int[][] matrix1, int[][] matrix2) {
-        int[][] ans = new int[matrix1.length][matrix1.length];
         for (int row = 0; row < matrix1.length; row++) {
             for (int column = 0; column < matrix1[row].length; column++) {
-                for (int i = 0; i < matrix1[row].length; i++) {
-                    ans[row][column] += matrix1[row][i] * matrix2[i][column];
+                int ans = 0;
+                for (int i = 0; i < matrix2[row].length; i++) {
+                    ans += matrix1[row][i] * matrix2[i][column];
                 }
+                System.out.print(ans + " ");
             }
+            System.out.println();
         }
-        displayMatrix(ans);
+        /*
+               B           D
+               F           G
+        A E   A*B + E*F   ans
+        B C
+         */
     }
 
 }

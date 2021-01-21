@@ -13,24 +13,26 @@ class Q3 {
                 break;
             }
 
+            //determine if gene is found
             boolean noGene = true;
 
             while (true) {
                 //check the genome has ATG or not
                 if (genome.contains("ATG")) {
 
+                    //TTAGT
                     //split the ATG out from the genome and also the genome before it
                     genome = splitATG(genome);
 
                     String gene = "";
-                    //check again if the genome contains ATG, TAG, TGA or TAA
+                    //check again if the genome contains TAG, TGA or TAA
                     //if yes then extract the gene out from the genome
                     gene = splitTXX(genome);
 
                     //"" means there is not gene in between ATG and TGA,TAA OR TAG
                     //"ATG" means there is ATG in the gene so it is not a gene
                     //gene should be multiple of 3 and should not be 0 length
-                    if (!gene.contains("ATG") && !gene.equals("") && gene.length() % 3 == 0 && gene.length() != 0) {
+                    if (!gene.contains("ATG") && !gene.equals("") && gene.length() % 3 == 0) {
                         System.out.println(gene);
                         noGene = false;
                     }
@@ -47,6 +49,7 @@ class Q3 {
     }
 
     public static String splitATG(String genome) {
+        //AASGGAG
         return genome.substring(genome.indexOf("ATG") + 3, genome.length());
     }
 

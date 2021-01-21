@@ -2,11 +2,11 @@ class SpecialDelivery extends Delivery {
 
     private boolean weekendDelivery;
     private boolean nightTimeDelivery;
-    private static double totalCost = 0;
 
     public static double getTotalCost() {
         return totalCost;
     }
+
 
     public SpecialDelivery(String sender, String recipient, double weight, boolean weekendDelivery, boolean nightTimeDelivery) {
         super(sender, recipient, weight);

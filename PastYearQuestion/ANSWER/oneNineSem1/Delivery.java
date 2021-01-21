@@ -4,6 +4,11 @@ class Delivery {
     protected String recipient;
     protected double weight;
 
+    protected static double totalCost = 0;
+    public Delivery(){
+
+    }
+
     public Delivery(String sender, String recipient, double weight) {
         this.sender = sender;
         this.recipient = recipient;
@@ -14,17 +19,23 @@ class Delivery {
         double cost = 0;
 
         if (weight <= 5) {
-            cost += weight * 2.8;
+            cost = weight * 2.8;
         } else if (weight > 5 && weight <= 20) {
-            cost += 5 * 2.8 + (weight - 5) * 5.2;
+            //7 - 5 = 2
+            cost = 5 * 2.8 + (weight - 5) * 5.2;
         } else if (weight > 20 && weight <= 50) {
-            cost += 5 * 2.8 + 15 * 5.2 + (weight - 20) * 7;
+            //25
+            // 5 * 2.8 , 15*5.2 , (25-20)*7
+            cost = 5 * 2.8 + 15 * 5.2 + (weight - 20) * 7;
         } else {
-            cost += 5 * 2.8 + 15 * 5.2 + 30 * 7 + (weight - 50) * 8.6;
+
+            cost = 5 * 2.8 + 15 * 5.2 + 30 * 7 + (weight - 50) * 8.6;
         }
 
         return cost;
     }
+
+
 
     public String toString() {
         return "From : " + sender
